@@ -5,7 +5,7 @@ export default function Button() {
     <div style={{ height: "600px", position: "relative" }}>
       <GlareHover
         glareColor="#ffffff"
-        glareOpacity={0.3}
+        glareOpacity={0.5}
         glareAngle={-30}
         glareSize={300}
         transitionDuration={800}

@@ -4,8 +4,8 @@
   border: none;
   display: block;
   background-color: #000000;
-  position: fixed;   /* stays in place even on scroll */
+  position: fixed;  
   top: 0;
   left: 0;
-  z-index: -1;       /* push it behind your content */
+  z-index: -1;       
 }

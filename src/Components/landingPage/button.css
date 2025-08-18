@@ -41,7 +41,12 @@
   transition: none;
 }
 
-.glare-hover--play-once:hover::before {
-  transition: var(--gh-duration) ease;
-  background-position: 100% 100%, 0 0;
+.glare-hover {
+  transform: scaleX(1);
+  transition: transform 0.2s ease-in-out;
+
+}
+
+.glare-hover.collapsed {
+  transform: scaleX(0);
 }

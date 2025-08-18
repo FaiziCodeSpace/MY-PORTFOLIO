@@ -3,22 +3,5 @@
     padding: 0;
 }
 
-/* Button */
-.access-btn {
- display: block;
- justify-self: center;
-  align-self: center;
-  margin-top: 2rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: black;
-  background: #00ff41;
-  border: none;
-  border-radius: 6px;
-  box-shadow: 0 0 15px #00ff41;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  z-index: 10;
-}
+
 

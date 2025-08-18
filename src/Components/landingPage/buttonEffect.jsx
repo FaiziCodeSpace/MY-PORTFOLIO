@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./button.css";
 
 const GlareHover = ({
@@ -7,7 +8,7 @@ const GlareHover = ({
   borderRadius = "10px",
   borderColor = "#333",
   children,
-  glareColor = "#ffffffff",
+  glareColor = "#ffffff",
   glareOpacity = 0.5,
   glareAngle = -45,
   glareSize = 250,
@@ -16,6 +17,12 @@ const GlareHover = ({
   className = "",
   style = {},
 }) => {
+   const [collapsed, setCollapsed] = useState(false);
+
+  const handleClick = () => {
+    setCollapsed(true);
+  };
+
   const hex = glareColor.replace("#", "");
   let rgba = glareColor;
   if (/^[0-9A-Fa-f]{6}$/.test(hex)) {
@@ -44,8 +51,8 @@ const GlareHover = ({
 
   return (
     <div
-      className={`glare-hover ${playOnce ? 'glare-hover--play-once' : ''} ${className}`}
-      style={{ ...vars, ...style }}
+      onClick={handleClick}
+      className={`glare-hover ${collapsed ? "collapsed" : ""} ${className}`}
     >
       {children}
     </div>
