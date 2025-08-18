@@ -7,7 +7,7 @@ const GlareHover = ({
   borderRadius = "10px",
   borderColor = "#333",
   children,
-  glareColor = "#ffffff",
+  glareColor = "#ffffffff",
   glareOpacity = 0.5,
   glareAngle = -45,
   glareSize = 250,

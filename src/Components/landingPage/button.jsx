@@ -15,11 +15,11 @@ export default function Button() {
           style={{
             fontSize: "3rem",
             fontWeight: "900",
-            color: "#333",
+            color: "black",
             margin: 0,
           }}
         >
-          Hover Me
+          Grant Access
         </h2>
       </GlareHover>
     </div>
