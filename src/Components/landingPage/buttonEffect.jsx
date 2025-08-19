@@ -53,6 +53,7 @@ const GlareHover = ({
     <div
       onClick={handleClick}
       className={`glare-hover ${collapsed ? "collapsed" : ""} ${className}`}
+      style={{ ...vars, ...style }}
     >
       {children}
     </div>
