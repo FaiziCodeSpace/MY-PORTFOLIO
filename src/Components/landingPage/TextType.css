@@ -1,0 +1,34 @@
+/* Wrapper centers everything */
+/* Wrapper with absolute positioning */
+.text-type-wrapper {
+  position: absolute;
+  top: 25%; /* adjust this value to move it vertically */
+  left: 50%;
+  transform: translate(-50%, -50%); /* center both axes relative to top/left */
+  text-align: center;
+  font-family: "Orbitron", monospace;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  width: 70%; /* span across screen */
+
+  line-height: 1;
+  color: #ffffff;
+}
+
+
+/* The actual typing text */
+.text-type__content {
+  display: inline;
+  white-space: pre-wrap;
+}
+
+/* Cursor */
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+}
+
+/* Hidden cursor while typing */
+.text-type__cursor--hidden {
+  display: none;
+}

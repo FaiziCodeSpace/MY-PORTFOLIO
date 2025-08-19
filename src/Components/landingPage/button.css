@@ -1,10 +1,11 @@
 .glare-hover {
+  font-family: "Orbitron", sans-serif;
   position: fixed; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scaleX(1); /* combine both */
   padding: 20px;
-  width: 350px;
+  width: 400px;
   background: #00ff41;
   border-radius: 5px;
   border: 3px solid #007a1f;
@@ -12,13 +13,22 @@
   display: grid;
   place-items: center;
   transition: transform 0.2s ease-in-out;
+  animation: buttonPop 0.5s linear;
+}
+@keyframes buttonPop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -05%) scaleX(1);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1);
+  }
 }
 
 .glare-hover.collapsed {
   transform: translate(-50%, -50%) scaleX(0);
 }
-
-
 
 .glare-hover::before {
   content: "";

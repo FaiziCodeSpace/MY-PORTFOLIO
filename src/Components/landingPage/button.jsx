@@ -13,7 +13,7 @@ export default function Button() {
       >
         <h2
           style={{
-            fontSize: "3rem",
+            fontSize: "clamp(2rem, 5vw, 3rem)",
             fontWeight: "900",
             color: "black",
             margin: 0,
