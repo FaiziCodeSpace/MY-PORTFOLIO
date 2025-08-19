@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./button.css";
+import Typer from "./typer";
 
 const GlareHover = ({
+  onClick,
   width = "500px",
   height = "500px",
   background = "#000",
@@ -17,10 +19,23 @@ const GlareHover = ({
   className = "",
   style = {},
 }) => {
-   const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
+  const [display, setDisplay] = useState(true);
+  const hoverSound = useRef(new Audio("/sounds/hover.wav"));
+  const clickSound = useRef(new Audio("/sounds/click.wav"));
 
   const handleClick = () => {
+    clickSound.current.currentTime = 0;
+    clickSound.current.play();
     setCollapsed(true);
+    setTimeout(() => {
+      setDisplay(!display);
+    }, 180); 
+    onClick();
+  };
+  const handleHover = () => {
+    hoverSound.current.currentTime = 0; // reset playback to start
+    hoverSound.current.play();
   };
 
   const hex = glareColor.replace("#", "");
@@ -50,13 +65,19 @@ const GlareHover = ({
   };
 
   return (
-    <div
-      onClick={handleClick}
-      className={`glare-hover ${collapsed ? "collapsed" : ""} ${className}`}
-      style={{ ...vars, ...style }}
-    >
-      {children}
-    </div>
+    <>
+      {display ? <Typer /> : null}
+      {display ? (
+        <div
+          onClick={handleClick}
+          onMouseEnter={handleHover}
+          className={`glare-hover ${collapsed ? "collapsed" : ""} ${className}`}
+          style={{ ...vars, ...style }}
+        >
+          {children}
+        </div>
+      ) : null}
+    </>
   );
 };
 
