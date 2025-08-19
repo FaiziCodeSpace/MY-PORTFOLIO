@@ -1,9 +1,10 @@
 import GlareHover from "./buttonEffect";
 
-export default function Button() {
+export default function Button({onClick}) {
   return (
     <div style={{ height: "600px", position: "relative" }}>
       <GlareHover
+        onClick={onClick}
         glareColor="#ffffff"
         glareOpacity={0.5}
         glareAngle={-30}

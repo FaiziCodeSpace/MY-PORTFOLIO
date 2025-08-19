@@ -5,7 +5,7 @@ const Squares = ({
   direction = 'diagonal',
   speed = 0.5,
   borderColor = 'rgba(0, 204, 51, 1)',
-  squareSize = 50,
+  squareSize = 100,
   hoverFillColor = '#222',
   className = ''
 }) => {
@@ -15,6 +15,7 @@ const Squares = ({
   const numSquaresY = useRef();
   const gridOffset = useRef({ x: 0, y: 0 });
   const hoveredSquare = useRef(null);
+  
 
   useEffect(() => {
     const canvas = canvasRef.current;
