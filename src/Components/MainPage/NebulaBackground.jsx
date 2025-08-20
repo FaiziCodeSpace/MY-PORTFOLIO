@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import "./NebulaBackground.css"
 
-// ✅ Your exact shader
+
 const NebulaShader = {
   uniforms: {
     time: { value: 0 },
