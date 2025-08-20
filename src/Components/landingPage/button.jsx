@@ -2,7 +2,7 @@ import GlareHover from "./buttonEffect";
 
 export default function Button({onClick}) {
   return (
-    <div style={{ height: "600px", position: "relative" }}>
+    
       <GlareHover
         onClick={onClick}
         glareColor="#ffffff"
@@ -23,6 +23,6 @@ export default function Button({onClick}) {
           Grant Access
         </h2>
       </GlareHover>
-    </div>
+    
   );
 }
