@@ -14,9 +14,9 @@ export default function Button({onClick}) {
       >
         <h2
           style={{
-            fontSize: "clamp(2rem, 5vw, 3rem)",
-            fontWeight: "900",
-            color: "black",
+            fontSize: "clamp(1rem, 5vw, 2rem)",
+            fontWeight: "100",
+            color: "white",
             margin: 0,
           }}
         >
