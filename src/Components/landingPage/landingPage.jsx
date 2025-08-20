@@ -4,17 +4,25 @@ import Button from "./button";
 
 const LandingPage = () => {
   const [triggerAnimation, setTriggerAnimation] = useState(false);
+  const [display, setDisplay] = useState(true);
 
-  function handleClick(){
+  function handleClick() {
     setTriggerAnimation(true);
+    setTimeout(() => {
+      setDisplay(false);
+    }, 1000);
   }
 
-  return(
-    <div> 
-        <Button onClick={handleClick}/>
-        <Squares className={triggerAnimation ? "disappearAnimation" : ""}/>
+  return (
+    <div>
+      {display ? (
+        <>
+          <Button onClick={handleClick} />
+          <Squares className={triggerAnimation ? "disappearAnimation" : ""} />
+        </>
+      ) : null}
     </div>
-  )
+  );
 };
 
 export default LandingPage;

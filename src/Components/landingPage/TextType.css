@@ -9,9 +9,8 @@
   font-family: "Orbitron", monospace;
   font-size: clamp(2rem, 5vw, 3.5rem);
   width: 70%; /* span across screen */
-
   line-height: 1;
-  color: #ffffff;
+  color: white;
 }
 
 

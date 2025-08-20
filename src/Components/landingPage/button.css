@@ -1,14 +1,14 @@
 .glare-hover {
-  font-family: "Orbitron", sans-serif;
+  font-family: "IBM Plex Mono", sans-serif;
   position: fixed; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scaleX(1); /* combine both */
   padding: 20px;
   width: 400px;
-  background: #00ff41;
+  background: #00FF41;
   border-radius: 5px;
-  border: 3px solid #007a1f;
+  border: 3px solid #66FF66;
   overflow: hidden;
   display: grid;
   place-items: center;

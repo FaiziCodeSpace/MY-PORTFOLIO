@@ -5,6 +5,9 @@
 }
 
 body{
-    background-color: black;
+    background-color: #2E2F33;
 }
 
+/* :root{
+    --bg-color: #00FF41;
+} */

@@ -4,7 +4,7 @@ import "./backgroundGrid.css"
 const Squares = ({
   direction = 'diagonal',
   speed = 0.5,
-  borderColor = 'rgba(0, 204, 51, 1)',
+  borderColor = '#434447',
   squareSize = 100,
   hoverFillColor = '#222',
   className = ''
