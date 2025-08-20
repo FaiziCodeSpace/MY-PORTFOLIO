@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
   z-index: -1;  
-  transition: 0.5s ease-in-out;   
+  transition: 0.5s ease-in-out;  
 }
 
 .disappearAnimation{
