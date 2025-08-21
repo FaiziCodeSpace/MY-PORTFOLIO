@@ -1,9 +1,10 @@
 .custom-shape {
+  position: absolute;
   width: 100%;
   height: 80vh;
   clip-path: url(#clip-shape);
   -webkit-clip-path: url(#clip-shape);
   overflow: hidden;
-    transform: translateY(-5vh) scaleY(1.2);
-
+  transform: translateY(-5vh) scaleY(1.2);
+  z-index: -1;
 }
