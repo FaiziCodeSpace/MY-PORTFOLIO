@@ -7,6 +7,7 @@ function App() {
     <>
       {/* Hidden SVG with clipPath definition */}
       <MainPage/>
+      
     </>
   );
 }
