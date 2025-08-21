@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import "./NebulaBackground.css"
-
+import "./NebulaBackground.css";
 
 const NebulaShader = {
   uniforms: {
     time: { value: 0 },
     resolution: { value: new THREE.Vector2(512, 512) },
+    mouse: { value: new THREE.Vector2(0.5, 0.5) }, // mouse uniform
   },
   vertexShader: `
     varying vec2 vUv;
@@ -23,8 +23,8 @@ const NebulaShader = {
     
     uniform float time;
     uniform vec2 resolution;
+    uniform vec2 mouse;   // real mouse input
 
-    #define mouse vec2(sin(time)/48., cos(time)/48.)
     #define iterations 14
     #define formuparam2 0.79
     #define volsteps 5
@@ -66,8 +66,7 @@ const NebulaShader = {
       vec2 uvs = uv2 * vec2(512) / 512.;
 
       float time2 = time;               
-      float speed = speed2;
-      speed = .01 * cos(time2*0.02 + 3.1415926/4.0);          
+      float speed = .01 * cos(time2*0.02 + 3.1415926/4.0);          
 
       float formuparam = formuparam2;
       vec2 uv = uvs;		       
@@ -83,6 +82,8 @@ const NebulaShader = {
       float v2 =1.0;	
       vec3 dir=vec3(uv*zoom,1.); 
       vec3 from=vec3(0.0, 0.0,0.0);                               
+
+      // 🌟 Smooth mouse interaction
       from.x -= 5.0*(mouse.x-0.5);
       from.y -= 5.0*(mouse.y-0.5);
 
@@ -169,13 +170,29 @@ const NebulaShader = {
 
 function ShaderPlane({ width, height }) {
   const materialRef = useRef();
+  const targetMouse = useRef(new THREE.Vector2(0.5, 0.5));
+  const shaderMouse = useRef(new THREE.Vector2(0.5, 0.5));
 
   useFrame(({ clock }) => {
     if (materialRef.current) {
-      materialRef.current.uniforms.time.value = clock.getElapsedTime();
+      materialRef.current.uniforms.time.value = clock.getElapsedTime() * 0.2;
       materialRef.current.uniforms.resolution.value.set(width, height);
+
+      // Smooth lerp towards target mouse
+      shaderMouse.current.lerp(targetMouse.current, 0.05);
+      materialRef.current.uniforms.mouse.value.copy(shaderMouse.current);
     }
   });
+
+  useEffect(() => {
+    function handleMouseMove(e) {
+      const x = e.clientX / window.innerWidth;
+      const y = 1.0 - e.clientY / window.innerHeight; // flip Y
+      targetMouse.current.set(x, y);
+    }
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
     <mesh>
