@@ -1,6 +1,6 @@
 .custom-shape {
   position: absolute;
-  width: 100%;
+  width: 100vw;
   height: 80vh;
   clip-path: url(#clip-shape);
   -webkit-clip-path: url(#clip-shape);
