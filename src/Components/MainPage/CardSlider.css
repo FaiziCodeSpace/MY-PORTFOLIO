@@ -2,9 +2,7 @@
 .card {
   width: 13vw;
   height: 42vh;
-  margin-top: 35vh;
-  margin-left: 2vw;
-  background: #a426c4;
+  background: rgba(132, 0, 255, 1);
   border-radius: 0 30px 0px 30px;
   display: flex;
   flex-direction: column;
