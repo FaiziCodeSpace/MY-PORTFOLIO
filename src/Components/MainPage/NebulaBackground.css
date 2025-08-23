@@ -2,9 +2,9 @@
   position: absolute;
   width: 100vw;
   height: 80vh;
-  clip-path: url(#clip-shape);
-  -webkit-clip-path: url(#clip-shape);
   overflow: hidden;
   transform: translateY(-5vh) scaleY(1.2);
+  border-radius: 1.75rem;
   z-index: -1;
 }
+

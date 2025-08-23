@@ -6,12 +6,9 @@
 body{
     background-color: black;
 }
+
 .card-Container-main{
     display: flex;
-    margin-top: 35vh;
+    margin-top: 30.51vh;
     justify-content: space-between;
-    padding: 0px 1.5rem;
 }
-/* :root{
-    --bg-color: #00FF41;
-} */

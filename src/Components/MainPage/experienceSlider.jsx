@@ -47,7 +47,7 @@ const updateCardGlowProperties = (card, mouseX, mouseY, glow, radius) => {
 };
 
 /* -------- ParticleCard (interactive shell) -------- */
-const ParticleCard = ({
+export const ParticleCard = ({
   children,
   className = "",
   disableAnimations = false,

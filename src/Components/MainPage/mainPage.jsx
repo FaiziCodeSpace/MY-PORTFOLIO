@@ -34,7 +34,6 @@ export default function MainPage() {
         </defs>
       </svg>
 
-      {/* Shader background with clipping */}
       <div className="custom-shape">
         <NebulaBackground style={{ width: "100%", height: "100%" }} />
       </div>
