@@ -34,12 +34,11 @@ export default function MainPage() {
         </defs>
       </svg>
 
-      {/* Shader background with clipping */}
-      {/* <div className="custom-shape">
+      <div className="custom-shape">
         <NebulaBackground style={{ width: "100%", height: "100%" }} />
       </div>
-      <Header />*/}
-      <div style={{display:'flex'}}>
+      <Header />
+      <div className="card-Container-main">
         <CardSlider /> 
       <ExperienceSlider/>
       </div>

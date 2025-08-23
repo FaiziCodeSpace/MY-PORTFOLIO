@@ -3,7 +3,7 @@
   --sat: 69%;
   --white: hsl(0, 0%, 100%);
   --purple-primary: rgba(132, 0, 255, 1);
-  --purple-glow: rgba(132, 0, 255, 0.25);
+  --purple-glow: rgba(132, 0, 255, 0.642);
   --purple-border: rgba(132, 0, 255, 0.8);
   --border-color: #392e4e;
   --background-dark: #060010;
@@ -103,10 +103,20 @@
 /* ANGLED + FIXED SIZE VARIANT */
 .exp-card--angled { border-radius: 30px 0 30px 0; }
 .exp-card--fixed {
-  width: 13vw;
-  height: 42vh;
+  box-sizing: border-box;
+  width: 20vw;
+  height: 52.5vh;
   aspect-ratio: auto;
-  border: 2px solid var(--white);
+  margin-left: 2vw;
+  transition: all 0.3s ease;
+  color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(3px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+    transition: all 0.3s ease;
 }
 
 /* BORDER GLOW */

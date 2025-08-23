@@ -1,11 +1,24 @@
+// cardSlider.jsx
 import { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { FaReact, FaNodeJs, FaDatabase, FaGithub, FaHtml5, FaCss3Alt, FaJsSquare } from "react-icons/fa";
+import {
+  FaReact,
+  FaNodeJs,
+  FaDatabase,
+  FaGithub,
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
+} from "react-icons/fa";
 import { SiExpress, SiMongodb, SiTailwindcss, SiGraphql } from "react-icons/si";
+
+// IMPORTANT: bring in the ParticleCard + the shared glow CSS
+import { ParticleCard } from "./experienceSlider"; // <-- adjust path if needed
 import "./CardSlider.css";
+import "./experienceSlider.css"; // ensures exp-card glow styles are present
 
 const slides = [
   { icon: <FaReact className="icon react" />, text: "Full control on building scalable React.js web apps" },
@@ -33,7 +46,7 @@ export default function CardSlider() {
     }
   }, [iconSwiper, textSwiper]);
 
-  // Handle dragging on the whole card
+  // Drag handlers (unchanged)
   const handlePointerDown = (e) => {
     setDragging(true);
     dragged.current = false;
@@ -60,68 +73,80 @@ export default function CardSlider() {
   };
 
   return (
-    <div
-      className="card grab-container"
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerLeave={handlePointerUp}
+    <ParticleCard
+      // Reuse your existing "card" look and add the glow variants
+      className="card exp-card exp-card--border-glow exp-card--angled exp-card--fixed"
+      style={{ "--glow-color": "132, 0, 255" }}
+      // Keep the fancy stuff, but pause tilt/magnetism during drag to avoid fighting your swipe logic
+      disableAnimations={false}
+      particleCount={12}
+      glowColor="132, 0, 255"
+      enableTilt={!dragging}
+      enableMagnetism={!dragging}
+      clickEffect
     >
-      {/* Icon Slider */}
-      <div className="slider-box">
-        <Swiper
-          modules={[Autoplay]}
-          onSwiper={setIconSwiper}
-          onSlideChange={(s) => {
-            if (textSwiper && textSwiper.realIndex !== s.realIndex) {
-              textSwiper.slideToLoop(s.realIndex);
-            }
-          }}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          speed={500}
-          loop={true}
-          allowTouchMove={false} // handled via whole card drag
-          className="swiper-icon"
-        >
-          {slides.map((slide, i) => (
-            <SwiperSlide key={i}>
-              <div className="slide-icon">{slide.icon}</div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      <div
+        className="drag-surface grab-container"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerUp}
+      >
+        {/* Icon Slider */}
+        <div className="slider-box">
+          <Swiper
+            modules={[Autoplay]}
+            onSwiper={setIconSwiper}
+            onSlideChange={(s) => {
+              if (textSwiper && textSwiper.realIndex !== s.realIndex) {
+                textSwiper.slideToLoop(s.realIndex);
+              }
+            }}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            speed={500}
+            loop={true}
+            allowTouchMove={false} // handled via whole card drag
+            className="swiper-icon"
+          >
+            {slides.map((slide, i) => (
+              <SwiperSlide key={i}>
+                <div className="slide-icon">{slide.icon}</div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      {/* Text Slider */}
-      <div className="text-box">
-        <Swiper
-          modules={[Pagination]}
-          onSwiper={setTextSwiper}
-          onSlideChange={(s) => {
-            if (iconSwiper && iconSwiper.realIndex !== s.realIndex) {
-              iconSwiper.slideToLoop(s.realIndex);
-            }
-          }}
-          pagination={{
-            el: ".custom-pagination",
-            clickable: true,
-            renderBullet: (index, className) =>
-              `<span class="${className}"></span>`,
-          }}
-          speed={500}
-          loop={true}
-          allowTouchMove={false} // dragging handled via card
-          className="swiper-text"
-        >
-          {slides.map((slide, i) => (
-            <SwiperSlide key={i}>
-              <p>{slide.text}</p>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+        {/* Text Slider */}
+        <div className="text-box">
+          <Swiper
+            modules={[Pagination]}
+            onSwiper={setTextSwiper}
+            onSlideChange={(s) => {
+              if (iconSwiper && iconSwiper.realIndex !== s.realIndex) {
+                iconSwiper.slideToLoop(s.realIndex);
+              }
+            }}
+            pagination={{
+              el: ".custom-pagination",
+              clickable: true,
+              renderBullet: (index, className) => `<span class="${className}"></span>`,
+            }}
+            speed={500}
+            loop={true}
+            allowTouchMove={false}
+            className="swiper-text"
+          >
+            {slides.map((slide, i) => (
+              <SwiperSlide key={i}>
+                <p>{slide.text}</p>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      {/* Pagination */}
-      <div className="custom-pagination"></div>
-    </div>
+        {/* Pagination */}
+        <div className="custom-pagination"></div>
+      </div>
+    </ParticleCard>
   );
 }
