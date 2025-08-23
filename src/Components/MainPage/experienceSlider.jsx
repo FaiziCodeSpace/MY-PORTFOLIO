@@ -70,7 +70,11 @@ const ParticleCard = ({
     if (particlesInitialized.current || !cardRef.current) return;
     const { width, height } = cardRef.current.getBoundingClientRect();
     memoizedParticles.current = Array.from({ length: particleCount }, () =>
-      createParticleElement(Math.random() * width, Math.random() * height, glowColor)
+      createParticleElement(
+        Math.random() * width,
+        Math.random() * height,
+        glowColor
+      )
     );
     particlesInitialized.current = true;
   }, [particleCount, glowColor]);
@@ -107,7 +111,11 @@ const ParticleCard = ({
         cardRef.current.appendChild(clone);
         particlesRef.current.push(clone);
 
-        gsap.fromTo(clone, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.7)" });
+        gsap.fromTo(
+          clone,
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.7)" }
+        );
         gsap.to(clone, {
           x: (Math.random() - 0.5) * 100,
           y: (Math.random() - 0.5) * 100,
@@ -117,7 +125,13 @@ const ParticleCard = ({
           repeat: -1,
           yoyo: true,
         });
-        gsap.to(clone, { opacity: 0.3, duration: 1.5, ease: "power2.inOut", repeat: -1, yoyo: true });
+        gsap.to(clone, {
+          opacity: 0.3,
+          duration: 1.5,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
       }, index * 100);
 
       timeoutsRef.current.push(timeoutId);
@@ -145,8 +159,15 @@ const ParticleCard = ({
     const handleMouseLeave = () => {
       isHoveredRef.current = false;
       clearAllParticles();
-      if (enableTilt) gsap.to(element, { rotateX: 0, rotateY: 0, duration: 0.3, ease: "power2.out" });
-      if (enableMagnetism) gsap.to(element, { x: 0, y: 0, duration: 0.3, ease: "power2.out" });
+      if (enableTilt)
+        gsap.to(element, {
+          rotateX: 0,
+          rotateY: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      if (enableMagnetism)
+        gsap.to(element, { x: 0, y: 0, duration: 0.3, ease: "power2.out" });
     };
 
     const handleMouseMove = (e) => {
@@ -210,7 +231,13 @@ const ParticleCard = ({
       gsap.fromTo(
         ripple,
         { scale: 0, opacity: 1 },
-        { scale: 1, opacity: 0, duration: 0.8, ease: "power2.out", onComplete: () => ripple.remove() }
+        {
+          scale: 1,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          onComplete: () => ripple.remove(),
+        }
       );
     };
 
@@ -227,7 +254,14 @@ const ParticleCard = ({
       element.removeEventListener("click", handleClick);
       clearAllParticles();
     };
-  }, [animateParticles, clearAllParticles, disableAnimations, enableTilt, enableMagnetism, glowColor]);
+  }, [
+    animateParticles,
+    clearAllParticles,
+    disableAnimations,
+    enableTilt,
+    enableMagnetism,
+    glowColor,
+  ]);
 
   return (
     <div
@@ -291,19 +325,28 @@ const GlobalSpotlight = ({
 
       const cards = gridRef.current.querySelectorAll(".card");
       if (!mouseInside) {
-        gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3, ease: "power2.out" });
-        cards.forEach((card) => card.style.setProperty("--glow-intensity", "0"));
+        gsap.to(spotlightRef.current, {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+        cards.forEach((card) =>
+          card.style.setProperty("--glow-intensity", "0")
+        );
         return;
       }
 
-      const { proximity, fadeDistance } = calculateSpotlightValues(spotlightRadius);
+      const { proximity, fadeDistance } =
+        calculateSpotlightValues(spotlightRadius);
       let minDistance = Infinity;
 
       cards.forEach((card) => {
         const cardRect = card.getBoundingClientRect();
         const centerX = cardRect.left + cardRect.width / 2;
         const centerY = cardRect.top + cardRect.height / 2;
-        const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY) - Math.max(cardRect.width, cardRect.height) / 2;
+        const distance =
+          Math.hypot(e.clientX - centerX, e.clientY - centerY) -
+          Math.max(cardRect.width, cardRect.height) / 2;
         const effectiveDistance = Math.max(0, distance);
 
         minDistance = Math.min(minDistance, effectiveDistance);
@@ -311,12 +354,24 @@ const GlobalSpotlight = ({
         let glowIntensity = 0;
         if (effectiveDistance <= proximity) glowIntensity = 1;
         else if (effectiveDistance <= fadeDistance)
-          glowIntensity = (fadeDistance - effectiveDistance) / (fadeDistance - proximity);
+          glowIntensity =
+            (fadeDistance - effectiveDistance) / (fadeDistance - proximity);
 
-        updateCardGlowProperties(card, e.clientX, e.clientY, glowIntensity, spotlightRadius);
+        updateCardGlowProperties(
+          card,
+          e.clientX,
+          e.clientY,
+          glowIntensity,
+          spotlightRadius
+        );
       });
 
-      gsap.to(spotlightRef.current, { left: e.clientX, top: e.clientY, duration: 0.1, ease: "power2.out" });
+      gsap.to(spotlightRef.current, {
+        left: e.clientX,
+        top: e.clientY,
+        duration: 0.1,
+        ease: "power2.out",
+      });
 
       const targetOpacity =
         minDistance <= proximity
@@ -337,7 +392,11 @@ const GlobalSpotlight = ({
         card.style.setProperty("--glow-intensity", "0");
       });
       if (spotlightRef.current) {
-        gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3, ease: "power2.out" });
+        gsap.to(spotlightRef.current, {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
       }
     };
 
@@ -357,7 +416,8 @@ const GlobalSpotlight = ({
 const useMobileDetection = () => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    const checkMobile = () =>
+      setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -382,10 +442,17 @@ export default function ExperienceMagicSlider({
 
   return (
     <section className="card-grid bento-section" ref={gridRef}>
-      {useSpotlight && <GlobalSpotlight gridRef={gridRef} disableAnimations={disableAnims} enabled={useSpotlight} glowColor={glowColor} />}
+      {useSpotlight && (
+        <GlobalSpotlight
+          gridRef={gridRef}
+          disableAnimations={disableAnims}
+          enabled={useSpotlight}
+          glowColor={glowColor}
+        />
+      )}
 
       <ParticleCard
-        className="card card--text-autohide card--border-glow card--angled card--fixed"
+        className="exp-card exp-card--text-autohide exp-card--border-glow exp-card--angled exp-card--fixed"
         style={{ "--glow-color": glowColor }}
         disableAnimations={disableAnims}
         particleCount={DEFAULT_PARTICLE_COUNT}
@@ -394,20 +461,19 @@ export default function ExperienceMagicSlider({
         clickEffect
         enableMagnetism
       >
-        {/* Slider-only content (no circle shapes) */}
-        <div className="slider-shell">
+        <div className="exp-slider-shell">
           <Swiper
             modules={[Autoplay]}
             autoplay={{ delay: 3500, disableOnInteraction: false }}
             loop
             allowTouchMove
-            className="experience-swiper"
+            className="exp-experience-swiper"
           >
             {slides.map((s, i) => (
               <SwiperSlide key={i}>
-                <div className="slide-box">
-                  <h2 className="slide-title">{s.header}</h2>
-                  <p className="slide-text">{s.text}</p>
+                <div className="exp-slide-box">
+                  <h2 className="exp-slide-title">{s.header}</h2>
+                  <p className="exp-slide-text">{s.text}</p>
                 </div>
               </SwiperSlide>
             ))}
