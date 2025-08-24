@@ -1,7 +1,8 @@
 import NebulaBackground from "./NebulaBackground";
 import Header from "./textAnimation";
-import CardSlider from "./CardSlider"
+import CardSlider from "./CardSlider";
 import ExperienceSlider from "./experienceSlider";
+import ProfileCard from "./contactCard";
 
 export default function MainPage() {
   return (
@@ -34,14 +35,28 @@ export default function MainPage() {
         </defs>
       </svg>
 
-      <div className="custom-shape">
+      {/* <div className="custom-shape">
         <NebulaBackground style={{ width: "100%", height: "100%" }} />
       </div>
       <Header />
+      
       <div className="card-Container-main">
-        <CardSlider /> 
-      <ExperienceSlider/>
-      </div>
+        <CardSlider />
+        <ExperienceSlider />
+      </div> */}
+
+      <ProfileCard
+        name="Javi A. Torres"
+        title="Software Engineer"
+        handle="javicodes"
+        status="Online"
+        contactText="Contact Me"
+        avatarUrl="/path/to/avatar.jpg"
+        showUserInfo={true}
+        enableTilt={true}
+        enableMobileTilt={false}
+        onContactClick={() => console.log("Contact clicked")}
+      />
     </>
   );
 }
