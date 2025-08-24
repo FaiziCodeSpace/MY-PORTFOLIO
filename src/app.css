@@ -12,3 +12,16 @@ body{
     margin-top: 30.51vh;
     justify-content: space-between;
 }
+@media only screen and (max-width: 900px) {
+    .card-Container-main{
+        margin-top: 90.51vh;
+        justify-content: center;
+        padding: 20px;
+    }
+}
+@media only screen and (max-width: 450px){
+    .card-Container-main{
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
