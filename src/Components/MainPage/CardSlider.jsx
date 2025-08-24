@@ -75,7 +75,7 @@ export default function CardSlider() {
   return (
     <ParticleCard
       // Reuse your existing "card" look and add the glow variants
-      className="card exp-card exp-card--border-glow exp-card--angled exp-card--fixed"
+      className="card exp-card exp-card--border-glow exp-card--angled"
       style={{ "--glow-color": "132, 0, 255" }}
       // Keep the fancy stuff, but pause tilt/magnetism during drag to avoid fighting your swipe logic
       disableAnimations={false}

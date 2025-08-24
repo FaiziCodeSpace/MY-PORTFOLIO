@@ -56,9 +56,16 @@
   color: var(--white);
 }
 
-.exp-card__header { gap: 0.75em; justify-content: space-between; }
-.exp-card__content { flex-direction: column; }
-.exp-card__label { font-size: 16px; }
+.exp-card__header {
+  gap: 0.75em;
+  justify-content: space-between;
+}
+.exp-card__content {
+  flex-direction: column;
+}
+.exp-card__label {
+  font-size: 16px;
+}
 
 .exp-card__title {
   font-weight: 400;
@@ -79,8 +86,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.exp-card--text-autohide .exp-card__title { -webkit-line-clamp: var(--clamp-title, 1); }
-.exp-card--text-autohide .exp-card__description { -webkit-line-clamp: var(--clamp-desc, 2); }
+.exp-card--text-autohide .exp-card__title {
+  -webkit-line-clamp: var(--clamp-title, 1);
+}
+.exp-card--text-autohide .exp-card__description {
+  -webkit-line-clamp: var(--clamp-desc, 2);
+}
 
 /* RESPONSIVE GRID */
 @media (max-width: 599px) {
@@ -90,38 +101,78 @@
     margin: 0 auto;
     padding: 0.5em;
   }
-  .exp-card { width: 100%; min-height: 180px; }
+  .exp-card {
+    width: 100%;
+    min-height: 180px;
+  }
 }
-@media (min-width: 600px) { .exp-card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 600px) {
+  .exp-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media (min-width: 1024px) {
-  .exp-card-grid { grid-template-columns: repeat(4, 1fr); }
-  .exp-card:nth-child(3) { grid-column: span 2; grid-row: span 2; }
-  .exp-card:nth-child(4) { grid-column: 1 / span 2; grid-row: 2 / span 2; }
-  .exp-card:nth-child(6) { grid-column: 4; grid-row: 3; }
+  .exp-card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .exp-card:nth-child(3) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .exp-card:nth-child(4) {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 2;
+  }
+  .exp-card:nth-child(6) {
+    grid-column: 4;
+    grid-row: 3;
+  }
 }
 
 /* ANGLED + FIXED SIZE VARIANT */
-.exp-card--angled { border-radius: 30px 0 30px 0; }
+.exp-card--angled {
+  border-radius: 30px 0 30px 0;
+}
 .exp-card--fixed {
+  justify-self: center;
   box-sizing: border-box;
-  width: 20vw;
+  width: 259.6px;
   height: 52.5vh;
   aspect-ratio: auto;
   margin-left: 2vw;
   transition: all 0.3s ease;
   color: #fff;
-    background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(3px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(3px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
-
+@media (max-width: 900px) {
+.exp-card--fixed {
+    background: #060010 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0px 30px 30px 0px;
+  }
+}
+@media (max-width: 600px){
+  .exp-card--fixed{
+    width: 200px;
+  }
+}
+@media (max-width: 450px){
+  .exp-card--fixed{
+    width: 100%;
+    border-radius: 2rem;
+    margin-right: 0.5rem;
+  }
+}
 /* BORDER GLOW */
 .exp-card--border-glow::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   padding: 6px;
@@ -152,11 +203,17 @@
 }
 
 /* PARTICLES (OPTIONAL) */
-.exp-particle-container { position: relative; overflow: hidden; }
+.exp-particle-container {
+  position: relative;
+  overflow: hidden;
+}
 .exp-particle::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
   background: rgba(132, 0, 255, 0.2);
   border-radius: 50%;
   z-index: -1;
@@ -172,11 +229,17 @@
   z-index: 200 !important;
   pointer-events: none;
 }
-.exp-bento-section { position: relative; user-select: none; }
+.exp-bento-section {
+  position: relative;
+  user-select: none;
+}
 
 /* SLIDER INSIDE CARD */
 .exp-slider-shell,
-.exp-experience-swiper { width: 100%; height: 100%; }
+.exp-experience-swiper {
+  width: 100%;
+  height: 100%;
+}
 
 .exp-slide-box {
   width: 100%;
