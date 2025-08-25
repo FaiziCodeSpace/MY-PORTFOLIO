@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback, useMemo } from "react";
-import "./contactCard.css";
+import "./ProfileCard.css";
 
 const DEFAULT_BEHIND_GRADIENT =
   "radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#00ffaac4 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#00c1ffff 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#c137ffff 0%,#07c6ffff 40%,#07c6ffff 60%,#c137ffff 100%)";
@@ -34,7 +34,7 @@ const easeInOutCubic = (x) =>
   x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 
 const ProfileCardComponent = ({
-  avatarUrl = "./avatar.jpg",
+  avatarUrl = "<Placeholder for avatar URL>",
   iconUrl = "<Placeholder for icon URL>",
   grainUrl = "<Placeholder for grain URL>",
   behindGradient,
@@ -351,4 +351,30 @@ const ProfileCardComponent = ({
 
 const ProfileCard = React.memo(ProfileCardComponent);
 
-export default ProfileCard;
+export default function Profile(){
+  return(<>
+     <main
+      style={{
+        minHeight: "100svh",
+        display: "grid",
+        placeItems: "center",
+        background:
+          "radial-gradient(100% 100% at 50% 0%, #0b1022 0%, #080b18 50%, #05070f 100%)",
+      }}
+    >
+      <ProfileCard
+        avatarUrl="/avatar.png"
+        iconUrl="/icon.svg"
+        grainUrl="/grain.png"
+        enableTilt={true}
+        enableMobileTilt={false}  
+        name="FAIZAN"
+        title="MERN Stack Developer"
+        handle="faiziCodeSpace"
+        status="Open to Work"
+        contactText="Contact"
+        onContactClick=""
+      />
+    </main>
+    </>)
+}

@@ -29,38 +29,10 @@
 }
 
 .pc-card-wrapper {
-  display: inline-block;
-  perspective: 1200px;
-}
-
-.pc-card {
+  perspective: 500px;
+  transform: translate3d(0, 0, 0.1px);
   position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--inner-gradient, #1e1e2f);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s ease;
-}
-
-.pc-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--behind-gradient, none);
-  z-index: 0;
-}
-
-.pc-inside {
-  position: relative;
-  z-index: 1;
-}
-
-.avatar {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 50%;
-  display: block;
-  margin: 0 auto;
+  touch-action: none;
 }
 
 .pc-card-wrapper::before {

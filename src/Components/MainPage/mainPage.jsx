@@ -2,11 +2,12 @@ import NebulaBackground from "./NebulaBackground";
 import Header from "./textAnimation";
 import CardSlider from "./CardSlider";
 import ExperienceSlider from "./experienceSlider";
-import ProfileCard from "./contactCard";
+import Profile from "./ProfileCard";
 
 export default function MainPage() {
   return (
     <>
+      {/* THE WORK BOX  */}
       <svg width="0" height="0">
         <defs>
           <clipPath id="clip-shape" clipPathUnits="objectBoundingBox">
@@ -34,29 +35,25 @@ export default function MainPage() {
           </clipPath>
         </defs>
       </svg>
+      {/* THE WORK BOX  */}
 
-      {/* <div className="custom-shape">
+      {/* HERO SECTION */}
+      <div className="custom-shape">
         <NebulaBackground style={{ width: "100%", height: "100%" }} />
       </div>
       <Header />
-      
+      {/* HERO SECTION */}
+
+      {/* SIDE CARDS - HERO SECTION */}
       <div className="card-Container-main">
         <CardSlider />
         <ExperienceSlider />
-      </div> */}
+      </div>
+      {/* SIDE CARDS - HERO SECTION */}
 
-      <ProfileCard
-        name="Javi A. Torres"
-        title="Software Engineer"
-        handle="javicodes"
-        status="Online"
-        contactText="Contact Me"
-        avatarUrl="/path/to/avatar.jpg"
-        showUserInfo={true}
-        enableTilt={true}
-        enableMobileTilt={false}
-        onContactClick={() => console.log("Contact clicked")}
-      />
+      {/* INTRODUCTION 2nd SECTION */}
+        <Profile/>
+      {/* INTRODUCTION 2nd SECTION */}
     </>
   );
 }
