@@ -3,6 +3,7 @@ import Header from "./textAnimation";
 import CardSlider from "./CardSlider";
 import ExperienceSlider from "./experienceSlider";
 import Profile from "./ProfileCard";
+import Describtion from "./describtion";
 
 export default function MainPage() {
   return (
@@ -52,7 +53,10 @@ export default function MainPage() {
       {/* SIDE CARDS - HERO SECTION */}
 
       {/* INTRODUCTION 2nd SECTION */}
-        <Profile/>
+        <div className="section-2">
+          <Profile/>
+        <Describtion/>
+        </div>
       {/* INTRODUCTION 2nd SECTION */}
     </>
   );
