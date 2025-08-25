@@ -12,8 +12,8 @@ export default function Header() {
         className="header"
       />
       <div className="buttons">
-        <button class="button btn-1" role="button">About</button>
-        <button class="button btn-2" role="button">Contact</button>
+        <button className="button btn-1" role="button">About</button>
+        <button className="button btn-2" role="button">Contact</button>
       </div>
      </div>
     </>
