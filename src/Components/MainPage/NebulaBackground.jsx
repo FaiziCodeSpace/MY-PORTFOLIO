@@ -66,8 +66,6 @@ const NebulaShader = {
       vec2 uvs = uv2 * vec2(512) / 512.;
 
       float time2 = time;               
-      float speed = .01 * cos(time2*0.02 + 3.1415926/4.0);          
-
       float formuparam = formuparam2;
       vec2 uv = uvs;		       
 
@@ -87,24 +85,19 @@ const NebulaShader = {
       from.x -= 5.0*(mouse.x-0.5);
       from.y -= 5.0*(mouse.y-0.5);
 
-      vec3 forward = vec3(0.,0.,1.);   
-      from.x += transverseSpeed*(1.0)*cos(0.01*time) + 0.001*time;
-      from.y += transverseSpeed*(1.0)*sin(0.01*time) +0.001*time;
+      // 🚀 Straight forward motion only
       from.z += 0.003*time;	
 
       dir.xy*=rot_xy;
-      forward.xy *= rot_xy;
-      dir.xz*=rot_xz;
-      forward.xz *= rot_xz;	
+      dir.xz*=rot_xz;	
       dir.yz*= rot_yz;
-      forward.yz *= rot_yz;
 
       from.xy*=-rot_xy;
       from.xz*=rot_xz;
       from.yz*= rot_yz;
 
-      float zooom = (time2-3311.)*speed;
-      from += forward* zooom;
+      float zooom = (time2-3311.)*0.01;
+      from += vec3(0.,0.,1.) * zooom;
       float sampleShift = mod( zooom, stepsize );
 
       float zoffset = -sampleShift;
