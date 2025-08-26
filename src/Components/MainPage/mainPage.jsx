@@ -53,11 +53,18 @@ export default function MainPage() {
       {/* SIDE CARDS - HERO SECTION */}
 
       {/* INTRODUCTION 2nd SECTION */}
-        <div className="section-2">
-          <Profile/>
-        <Describtion/>
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '2rem',
+          marginTop: "9rem"
+        }}>
+          <Profile />
+          <Describtion/>
         </div>
-      {/* INTRODUCTION 2nd SECTION */}
+        {/* INTRODUCTION 2nd SECTION */}
     </>
   );
 }
