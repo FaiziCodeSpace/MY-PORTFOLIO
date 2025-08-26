@@ -15,10 +15,7 @@ body{
     margin-top: 30.51vh;
     justify-content: space-between;
 }
-.section-2{
-    display: flex;
-    justify-content: center;
-}
+
 @media only screen and (max-width: 900px) {
     .card-Container-main{
         margin-top: 90.51vh;

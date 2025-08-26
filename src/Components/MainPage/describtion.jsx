@@ -194,14 +194,14 @@ export default function Describtion() {
   const containerRef = useRef(null);
   return (
     <>
-      <div ref={containerRef} style={{ position: "relative" }}>
+      <div ref={containerRef} style={{ position: "relative", maxWidth: "500px" }}>
         <VariableProximity
-          label={"Hover me! And then star React Bits on GitHub, or else..."}
+          label={"I'm Faizan — a joyful builder who loves mixing creativity with code, making pixels dance, and turning ideas into cozy, interactive experiences. With a playful approach to web development, I enjoy crafting apps that don't just work but feel good to use — smooth, fun, and a little bit magical. Whether I'm battling CSS into submission, experimenting with animations, or designing interfaces that spark joy, I bring energy, curiosity, and a touch of cool to everything I create."}
           className={"variable-proximity-demo"}
-          fromFontVariationSettings="'wght' 400, 'opsz' 9"
-          toFontVariationSettings="'wght' 1000, 'opsz' 40"
+          fromFontVariationSettings="'wght' 100, 'opsz' 9"
+          toFontVariationSettings="'wght' 700, 'opsz' 32"
           containerRef={containerRef}
-          radius={100}
+          radius={50}
           falloff="linear"
         />
       </div>

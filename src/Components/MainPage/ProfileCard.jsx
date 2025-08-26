@@ -342,15 +342,6 @@ const ProfileCard = React.memo(ProfileCardComponent);
 export default function Profile() {
   return (
     <>
-      <main
-        style={{
-          minHeight: "100svh",
-          display: "grid",
-          placeItems: "center",
-          background:
-            "radial-gradient(100% 100% at 50% 0%, #1a0b2e 0%, #12071f 50%, #0a0312 100%)",
-        }}
-      >
         <ProfileCard
           avatarUrl="/avatar.png"
           iconUrl="/icon.svg"
@@ -364,7 +355,6 @@ export default function Profile() {
           contactText="Contact"
           onContactClick=""
         />
-      </main>
     </>
   );
 }
